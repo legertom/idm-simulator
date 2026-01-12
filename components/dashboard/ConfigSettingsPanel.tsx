@@ -168,10 +168,10 @@ export function PasswordSettingsPanel() {
                                 <p>If you need to remove the password reset from preview, use the undo button.</p>
                                 <p>If you want to do this for a subset of schools/grades, apply the filters first.</p>
                             </div>
-                            <div className="flex flex-col xl:flex-row gap-2 xl:gap-3 mt-4">
-                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full xl:flex-1 h-12 text-sm font-medium whitespace-nowrap">Trigger Preview</Button>
-                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full xl:flex-1 h-12 text-sm font-medium whitespace-nowrap">Commit Preview</Button>
-                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full xl:flex-1 h-12 text-sm font-medium whitespace-nowrap">Undo Preview</Button>
+                            <div className="flex flex-col gap-2 mt-4 sm:flex-row sm:flex-wrap">
+                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full sm:min-w-[140px] sm:flex-1 h-12 text-sm font-medium whitespace-nowrap">Trigger Preview</Button>
+                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full sm:min-w-[140px] sm:flex-1 h-12 text-sm font-medium whitespace-nowrap">Commit Preview</Button>
+                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full sm:min-w-[140px] sm:flex-1 h-12 text-sm font-medium whitespace-nowrap">Undo Preview</Button>
                             </div>
                         </div>
                     )}
