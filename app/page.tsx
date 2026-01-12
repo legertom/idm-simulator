@@ -1,65 +1,78 @@
-import Image from "next/image";
+import { ConfigPanel } from "@/components/dashboard/ConfigPanel";
+import { SubscriptionPanel } from "@/components/dashboard/SubscriptionPanel";
+import { SyncConfigPanel } from "@/components/dashboard/SyncConfigPanel";
+import { PasswordResetConfigPanel } from "@/components/dashboard/PasswordResetConfigPanel";
+import { FiltersPanel } from "@/components/dashboard/FiltersPanel";
+import { SyncsPanel } from "@/components/dashboard/SyncsPanel";
+import { GoogleSchemaPanel } from "@/components/dashboard/GoogleSchemaPanel";
+import { CustomExportsPanel } from "@/components/dashboard/CustomExportsPanel";
+import { ConfigSettingsPanel, PasswordSettingsPanel, SyncSettingsPanel } from "@/components/dashboard/ConfigSettingsPanel";
+import { UserAssociationsPanel } from "@/components/dashboard/UserAssociationsPanel";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
+    <div className="min-h-screen bg-zinc-50/50 text-slate-900 p-8 font-sans">
+      <header className="mb-8 border-b border-slate-200 pb-4">
+        <h1 className="text-2xl font-semibold text-slate-800 tracking-tight">
+          Mayton County Unified School District 42 (GA) - US
+        </h1>
+        <nav className="mt-4 overflow-x-auto no-scrollbar">
+          <div className="flex items-center gap-6 whitespace-nowrap text-[13px] text-slate-500 font-medium pb-2 border-b border-slate-100">
+            <span className="hover:text-blue-600 cursor-pointer">Info</span>
+            <span className="hover:text-blue-600 cursor-pointer">Team Members</span>
+            <span className="hover:text-blue-600 cursor-pointer">Apps</span>
+            <span className="hover:text-blue-600 cursor-pointer">Holds</span>
+            <span className="hover:text-blue-600 cursor-pointer">Timeline</span>
+            <span className="flex items-center gap-1 hover:text-blue-600 cursor-pointer">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><rect width="4" height="4" x="7" y="7" /><rect width="4" height="4" x="13" y="13" /><rect width="4" height="4" x="7" y="13" /><rect width="4" height="4" x="13" y="7" /></svg>
+              SSO & Badges
+            </span>
+            <span className="hover:text-blue-600 cursor-pointer">LMS</span>
+            <span className="hover:text-blue-600 cursor-pointer">Sharing Analyst</span>
+            <span className="hover:text-blue-600 cursor-pointer">District Pulse</span>
+            <span className="hover:text-blue-600 cursor-pointer">Sync Settings</span>
+            <span className="hover:text-blue-600 cursor-pointer">SFTP Files</span>
+            <span className="hover:text-blue-600 cursor-pointer">Library</span>
+            <span className="hover:text-blue-600 cursor-pointer">MDR and NCES</span>
+            <span className="text-blue-600 font-bold border-b-2 border-blue-600 pb-2 -mb-2">IDM</span>
+            <span className="hover:text-blue-600 cursor-pointer">Google Classroom</span>
+            <span className="flex items-center gap-1 hover:text-blue-600 cursor-pointer">
+              <svg className="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+              MFA
+            </span>
+            <span className="hover:text-slate-800 cursor-pointer ml-2">App Store</span>
+            <span className="hover:text-slate-800 cursor-pointer">Advanced</span>
+          </div>
+        </nav>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-[1600px] mx-auto">
+        {/* Row 1 */}
+        <ConfigPanel />
+        <SubscriptionPanel />
+
+        {/* Row 2 */}
+        <SyncConfigPanel />
+        <PasswordResetConfigPanel />
+
+        {/* Row 3 */}
+        <FiltersPanel />
+        <SyncsPanel />
+
+        {/* Row 4 */}
+        <GoogleSchemaPanel />
+        <CustomExportsPanel />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6 max-w-[1600px] mx-auto">
+        <ConfigSettingsPanel />
+        <PasswordSettingsPanel />
+        <SyncSettingsPanel />
+      </div>
+
+      <div className="mt-8 max-w-[1600px] mx-auto">
+        <UserAssociationsPanel />
+      </div>
     </div>
   );
 }
