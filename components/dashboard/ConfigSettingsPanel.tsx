@@ -12,12 +12,12 @@ import { Checkbox } from "@/components/ui/checkbox";
 // Helper for "Tabs"
 function UserTypeTabs({ selected, onSelect }: { selected: string; onSelect: (tab: string) => void }) {
     return (
-        <div className="flex text-sm border-b border-gray-200 mb-4">
+        <div className="flex text-sm border-b border-gray-200 mb-4 overflow-x-auto">
             {["Students", "Teachers", "Staff"].map((tab) => (
                 <button
                     key={tab}
                     onClick={() => onSelect(tab)}
-                    className={`px-4 py-2 font-medium transition-colors ${tab === selected
+                    className={`px-3 sm:px-4 py-2 font-medium transition-colors whitespace-nowrap flex-shrink-0 ${tab === selected
                         ? "text-blue-600 border-b-2 border-blue-600"
                         : "text-gray-500 hover:text-gray-700"
                         }`}
@@ -113,38 +113,39 @@ export function PasswordSettingsPanel() {
                 <CardTitle className="text-xl font-medium text-slate-600">Password Settings per User Type</CardTitle>
                 <Info className="h-5 w-5 text-blue-600" />
             </CardHeader>
-            <CardContent className="space-y-6 text-sm pt-2">
-                <div className="text-xs text-slate-500 mb-2">
+            <CardContent className="space-y-6 text-sm pt-2 overflow-x-hidden">
+                <div className="text-xs text-slate-500 mb-2 break-words">
                     See <span className="text-blue-500 cursor-pointer">this Guru card</span> for more details on IDM password settings.
                 </div>
 
                 <UserTypeTabs selected={selectedTab} onSelect={setSelectedTab} />
 
                 <div className="space-y-2">
-                    <h4 className="font-semibold text-slate-700">Reset password on 1st login for all {userTypeParams}</h4>
-                    <div className="flex items-center space-x-2">
+                    <h4 className="font-semibold text-slate-700 break-words">Reset password on 1st login for all {userTypeParams}</h4>
+                    <div className="flex items-start space-x-2">
                         <Checkbox
                             id={`reset-1st-${selectedTab}`}
+                            className="mt-0.5 flex-shrink-0"
                             checked={reset1stLogin[selectedTab]}
                             onCheckedChange={(checked) => setReset1stLogin(prev => ({ ...prev, [selectedTab]: !!checked }))}
                         />
-                        <label htmlFor={`reset-1st-${selectedTab}`} className="text-slate-700">Have {userTypeParams} reset password on 1st login</label>
+                        <label htmlFor={`reset-1st-${selectedTab}`} className="text-slate-700 break-words">Have {userTypeParams} reset password on 1st login</label>
                     </div>
                 </div>
 
                 <div className="space-y-2">
-                    <h4 className="font-semibold text-slate-700">Reset passwords to password formula for {userTypeParams} on "match" operations</h4>
+                    <h4 className="font-semibold text-slate-700 break-words">Reset passwords to password formula for {userTypeParams} on "match" operations</h4>
                     <div className="text-xs text-slate-500">
                         See <span className="text-blue-500 cursor-pointer">this Guru card</span> for more details on this feature.
                     </div>
                     <div className="flex items-start space-x-2">
                         <Checkbox
                             id={`match-reset-${selectedTab}`}
-                            className="mt-0.5"
+                            className="mt-0.5 flex-shrink-0"
                             checked={matchReset[selectedTab]}
                             onCheckedChange={(checked) => setMatchReset(prev => ({ ...prev, [selectedTab]: !!checked }))}
                         />
-                        <label htmlFor={`match-reset-${selectedTab}`} className="text-slate-700 leading-tight">Have "match" operations reset passwords to the password formula for {userTypeParams}</label>
+                        <label htmlFor={`match-reset-${selectedTab}`} className="text-slate-700 leading-tight break-words">Have "match" operations reset passwords to the password formula for {userTypeParams}</label>
                     </div>
                     <p className="text-xs text-slate-500 italic">
                         You will need to manually trigger a preview and run a sync after these are updated.
@@ -154,11 +155,11 @@ export function PasswordSettingsPanel() {
 
                 <div className="border-t pt-4">
                     <div
-                        className="flex justify-between items-center cursor-pointer mb-2"
+                        className="flex justify-between items-center cursor-pointer mb-2 gap-2"
                         onClick={() => setIsResetOpen(!isResetOpen)}
                     >
-                        <h4 className="font-bold text-slate-700">Reset passwords for all {userTypeParams}</h4>
-                        <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform ${isResetOpen ? 'rotate-0' : 'rotate-90'}`} />
+                        <h4 className="font-bold text-slate-700 break-words flex-1">Reset passwords for all {userTypeParams}</h4>
+                        <ChevronDown className={`h-4 w-4 text-slate-400 transition-transform flex-shrink-0 ${isResetOpen ? 'rotate-0' : 'rotate-90'}`} />
                     </div>
                     {isResetOpen && (
                         <div className="space-y-4">
@@ -167,10 +168,10 @@ export function PasswordSettingsPanel() {
                                 <p>If you need to remove the password reset from preview, use the undo button.</p>
                                 <p>If you want to do this for a subset of schools/grades, apply the filters first.</p>
                             </div>
-                            <div className="flex gap-4 mt-4">
-                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white flex-1 h-12 text-sm font-medium">Trigger Preview</Button>
-                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white flex-1 h-12 text-sm font-medium">Commit Preview</Button>
-                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white flex-1 h-12 text-sm font-medium">Undo Preview</Button>
+                            <div className="flex flex-col lg:flex-row gap-2 lg:gap-3 mt-4">
+                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full lg:flex-1 h-12 text-sm font-medium whitespace-nowrap">Trigger Preview</Button>
+                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full lg:flex-1 h-12 text-sm font-medium whitespace-nowrap">Commit Preview</Button>
+                                <Button className="bg-[#3b82f6] hover:bg-blue-600 text-white w-full lg:flex-1 h-12 text-sm font-medium whitespace-nowrap">Undo Preview</Button>
                             </div>
                         </div>
                     )}
